@@ -10,8 +10,6 @@ import java.util.ArrayList;
 
 
 public class storagie {
-	
-	 private static storagie theInstance = new storagie(); 
 	 
 	public static void serialize(ArrayList<Task> tasks, File charger) {
 		try {
@@ -61,13 +59,6 @@ public class storagie {
 		serialize(task,charger);
 		deserialize(charger);
 		
-	}
-
-	public static storagie getInstance() {
-		//patterns
-		// page 84, restrict the number of instantiated objects of storagie class to just one.
-		//use private constructor, a public method to access the single instance.
-		return theInstance;
 	}
 
 }
