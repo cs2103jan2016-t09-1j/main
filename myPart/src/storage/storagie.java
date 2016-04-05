@@ -13,7 +13,7 @@ public class storagie {
 	
 	 private static storagie theInstance = new storagie(); 
 	 
-	public static void serialize(ArrayList<String> tasks, File charger) {
+	public static void serialize(ArrayList<Task> tasks, File charger) {
 		try {
 			
 			FileOutputStream fileOut = new FileOutputStream(charger);
@@ -32,12 +32,12 @@ public class storagie {
 	 * @return ArrayList of tasks
 	 */
 	@SuppressWarnings("unchecked")
-	public static ArrayList<String> deserialize(File charger) {
+	public static ArrayList<Task> deserialize(File charger) {
 		
 		try {
 			FileInputStream fileIn = new FileInputStream(charger);
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			ArrayList<String> tasks = (ArrayList<String>) in.readObject();
+			ArrayList<Task> tasks = (ArrayList<Task>) in.readObject();
 			in.close();
 			fileIn.close();
 			return tasks;
@@ -53,14 +53,14 @@ public class storagie {
 	public static void main(String args[] )
 	{
 		
-		ArrayList <String> task = new ArrayList <String>();  
+		ArrayList <Task> task = new ArrayList <Task>();  
 		File charger= new File("charger");
-		task.add("this is hard!");
+		Task test = new Task();
+		test.changeName("hard");
+		task.add(test);
 		serialize(task,charger);
 		deserialize(charger);
 		
-	
-	
 	}
 
 	public static storagie getInstance() {
